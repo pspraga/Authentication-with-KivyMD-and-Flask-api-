@@ -1,0 +1,194 @@
+ScreenManager:
+    loginPage:
+    signupPage:
+    dashPage:
+
+
+<loginPage>:
+    name:"login"
+    
+    
+        
+   
+    MDLabel:
+        text:"Welcome"
+        font_size: "48dp"
+        halign: "center"
+        color: "#FF5623"
+        pos_hint:{'center_y':8}
+    MDTextField:
+        id: uname
+        hint_text:"Username"
+        icon_right:"account"
+        font_size:"20dp"
+        size_hint_x:.85
+        pos_hint:{'center_x':.5,'center_y':.65}
+        on_text: self.text=self.text.replace("","")
+        write_tab: False
+    MDTextField:
+        id: passwd
+        hint_text:"Password"
+        icon_right:"eye-off"
+        font_size:"20dp"
+        password: True
+        size_hint_x:.85
+        pos_hint:{'center_x':.5,'center_y':.55}
+        on_text: self.text=self.text.replace("","")
+        write_tab: False
+
+    BoxLayout:
+        size_hint:.85,None
+        height:"30dp"
+        width:"30dp"
+        pos_hint:{'center_x':.5,'center_y':.4}
+        spacing: "5dp"
+        MDCheckbox:
+            id: cb
+            size_hint: None,None
+            width: "30dp"
+            height: "30dp"
+            on_press:
+                passwd.password= False if passwd.password== True else True
+                passwd.icon_right= "eye" if passwd.icon_right=="eye-off" else "eye-off" 
+        MDLabel:
+            text: "[ref=Show Password]Show Password[/ref]"
+            markup:True
+            pos_hint:{'center_x':.5,'center_y':.5}
+            on_ref_press:
+                cb.active=False if cb.active==True else True
+                passwd.password= False if passwd.password== True else True
+                passwd.icon_right= "eye" if passwd.icon_right=="eye-off" else "eye-off"
+    BoxLayout:
+        size_hint:.85,None
+        height:"30dp"
+        width:"30dp"
+        pos_hint:{'center_x':.5,'center_y':.3}
+        spacing: "5dp"
+        MDFlatButton:
+            text:"Sign In"
+            font_size: "22dp"
+            size_hint_x: 1
+            md_bg_color:"#FF5623"
+            on_press:
+                root.login()
+                
+                
+
+                
+        MDFlatButton:
+            text:"Sign Up"
+            font_size: "22dp"
+            size_hint_x: 1
+            md_bg_color:"#FF5623"
+            
+
+                
+<signupPage>:
+    name: "signup"
+
+    
+        
+    Image:
+        source: "w1.jpg"
+        size_hint: None,None
+        width:"720dp"
+        height:"1200dp"
+        pos_hint:{'center_x':.5,'center_y':.5}
+    MDLabel:
+        text:"Welcome"
+        font_size: "48dp"
+        halign: "center"
+        color: "#FF5623"
+        pos_hint:{'center_y':8}
+    MDTextField:
+        id: uname
+        hint_text:"Username"
+        icon_right:"account"
+        font_size:"20dp"
+        size_hint_x:.85
+        pos_hint:{'center_x':.5,'center_y':.65}
+        on_text: self.text=self.text.replace("","")
+        write_tab: False
+    MDTextField:
+        id: email
+        hint_text:"Email"
+        icon_right:"account"
+        font_size:"20dp"
+        size_hint_x:.85
+        pos_hint:{'center_x':.5,'center_y':.55}
+        on_text: self.text=self.text.replace("","")
+        write_tab: False
+    MDTextField:
+        id: passwd
+        hint_text:"Password"
+        icon_right:"eye-off"
+        font_size:"20dp"
+        password: True
+        size_hint_x:.85
+        pos_hint:{'center_x':.5,'center_y':.45}
+        on_text: self.text=self.text.replace("","")
+        write_tab: False
+
+    BoxLayout:
+        size_hint:.85,None
+        height:"30dp"
+        width:"30dp"
+        pos_hint:{'center_x':.5,'center_y':.4}
+        spacing: "5dp"
+        MDCheckbox:
+            id: cb
+            size_hint: None,None
+            width: "30dp"
+            height: "30dp"
+            on_press:
+                passwd.password= False if passwd.password== True else True
+                passwd.icon_right= "eye" if passwd.icon_right=="eye-off" else "eye-off" 
+        MDLabel:
+            text: "[ref=Show Password]Show Password[/ref]"
+            markup:True
+            pos_hint:{'center_x':.5,'center_y':.5}
+            on_ref_press:
+                cb.active=False if cb.active==True else True
+                passwd.password= False if passwd.password== True else True
+                passwd.icon_right= "eye" if passwd.icon_right=="eye-off" else "eye-off"
+    BoxLayout:
+        size_hint:.85,None
+        height:"30dp"
+        width:"30dp"
+        pos_hint:{'center_x':.5,'center_y':.3}
+        spacing: "5dp"
+        MDFlatButton:
+            text:"Sign Up"
+            font_size: "22dp"
+            size_hint_x: 1
+            md_bg_color:"#FF5623"
+            on_press:root.Submit()
+                
+
+
+<dashPage>:
+    name: "dash"
+
+    
+        
+    
+    MDLabel:
+        text:"Plenum Info Sys"
+        font_size: "25dp"
+        halign: "center"
+        color: "#FF5623"
+        pos_hint:{'center_y':.8}
+    
+    BoxLayout:
+        size_hint:.85,None
+        height:"30dp"
+        width:"30dp"
+        pos_hint:{'center_x':.5,'center_y':.1}
+        spacing: "5dp"
+        MDFlatButton:
+            text:"Log Out"
+            font_size: "22dp"
+            size_hint_x: 1
+            md_bg_color:"#FF5623"
+            on_press:root.manager.current="login"
+                
